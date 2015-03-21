@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,7 +16,7 @@ import butterknife.InjectView;
 
 public class MainActivity extends ActionBarActivity {
 
-    protected String mUrl = "http://www.juanpabloprado.com";
+    protected String mUrl = "http://tu-desarrollo.com/apps/camp-cun-view/public_html/";
 
     @InjectView(R.id.webView) WebView mWebView;
 
@@ -23,7 +25,10 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_web_view);
         ButterKnife.inject(this);
-        mWebView.setWebViewClient(new WebViewClient());
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
+        mWebView.setWebChromeClient(new WebChromeClient());
         mWebView.loadUrl(mUrl);
     }
 
