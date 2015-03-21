@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
