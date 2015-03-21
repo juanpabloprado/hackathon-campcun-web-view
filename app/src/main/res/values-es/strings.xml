@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CampCunWeb</string>
+
+    <string name="action_share">Compartir</string>
+    <string name="share_chooser_title">¿Cómo quieres compartir?</string>
+</resources>
