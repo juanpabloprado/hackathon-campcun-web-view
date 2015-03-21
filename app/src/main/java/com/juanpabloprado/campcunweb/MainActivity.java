@@ -1,16 +1,20 @@
 package com.juanpabloprado.campcunweb;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
+
+    protected String mUrl = "http://www.juanpabloprado.com";
 
     @InjectView(R.id.webView) WebView mWebView;
 
@@ -19,7 +23,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_web_view);
         ButterKnife.inject(this);
-        mWebView.loadUrl("");
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebView.loadUrl(mUrl);
     }
 
 
@@ -37,11 +42,17 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_share) {
+            share();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void share() {
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, mUrl);
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_chooser_title)));
     }
 }
