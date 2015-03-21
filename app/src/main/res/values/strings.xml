@@ -1,6 +1,3 @@
 <resources>
-    <string name="app_name">CampCunWeb</string>
-
-    <string name="action_share">Share</string>
-    <string name="share_chooser_title">How do you want to share?</string>
+    <string name="app_name">CampCun</string>
 </resources>
